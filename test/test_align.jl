@@ -4,6 +4,7 @@
         [nothing, 'b', 'c', 'e', nothing]
     )
 
+    # align("ab", "bc")
 
     
 end
