@@ -1,5 +1,7 @@
 module VectorAlignments
 
+using Test, TestSetExtensions
+
 include("matrix.jl")
 include("lcs.jl")
 include("scs.jl")
