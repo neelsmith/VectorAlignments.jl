@@ -5,6 +5,6 @@ include("lcs.jl")
 include("scs.jl")
 include("alignment.jl")
 
-export scs
+export scs, lcs, align
 
 end # module VectorAlignments
