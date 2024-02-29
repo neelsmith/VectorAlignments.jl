@@ -2,3 +2,6 @@ name = "VectorAlignments"
 uuid = "137e0234-31ad-43b7-8b27-b236525e28e1"
 authors = ["Neel Smith  <dnsmith.neel@gmail.com>"]
 version = "0.1.0"
+
+[deps]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"

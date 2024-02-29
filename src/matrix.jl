@@ -17,16 +17,3 @@ function alignmentmemo(a, b)
     rows, cols = size(lengths)
     lengths
 end
-
-
-"""Find shortest common supersequence for a vector of sequences."""
-function scs(v...)
-	if length(v) < 2
-		v
-	else 
-		scs1 = scspair(v[1], v[2])
-        length(v) == 2 ? scs1 : scs(scs1, v[3:end]...)
-	end
-end
-
-
