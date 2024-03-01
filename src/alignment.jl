@@ -34,7 +34,7 @@ This in effect generates a feature table represented as a
 list of parallel vectors of equal length.
 
 # Examples
-```julia-repl
+```jldoctest
 julia> align([1,3,5], [1,2,3])
 2-element Vector{Any}:
  Any[1, nothing, 3, 5]

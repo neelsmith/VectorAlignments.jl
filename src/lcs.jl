@@ -28,7 +28,7 @@ end
 """Find the longest common subsequence for a vector of sequences.
 
 # Examples
-```julia-repl
+```jldoctest
 julia> lcs([1,3,5], [1,2,3])
 2-element Vector{Any}:
  1

@@ -2,7 +2,7 @@
 
 
 # Examples
-```julia-repl
+```jldoctest
 julia> scs([1,3,5], [1,2,3])
 4-element Vector{Any}:
  1
