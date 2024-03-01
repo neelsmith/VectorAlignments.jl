@@ -1,18 +1,20 @@
 # VectorAlignments
 
-Document it here.
 
-Compare and align vectors of any type.
+## Overview 
 
-- lcs
-- scs
-- align
+Compare and align vectors of any type. Find longest common subsequence, shortest common supersequence, and align elements in parallel sequences.
 
+
+### Longest common subsequence
 
 ```@example basic
 using VectorAlignments
 lcs("ab", "abc")
 ```
+
+
+### Shortest common supersequence
 
 ```@example basic
 scs("ab", "abc")
@@ -20,6 +22,8 @@ scs("ab", "abc")
 
 
 
+### Align elements in parallel sequences
 
-
-align("ab", "abc")
+```@example basic
+align("bc", "abc")
+```
