@@ -46,11 +46,14 @@ function scspair(a, b)
         end
        
     end
-    if y > 1
-        push!(keepers, b[y-1])
+    @debug("At end with x/y $(x), $(y)")
+    while y > 1
+        y = y -1
+        push!(keepers, b[y])
     end
-    if x > 1
-        push!(keepers, a[x-1])
+    while x > 1
+        x = x - 1
+        push!(keepers, a[x])
     end
     
     keepers |> reverse

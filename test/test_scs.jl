@@ -7,4 +7,6 @@
     @test scs("abcd", "bcde") == collect("abcde")
     @test scs("ac", "abcd") == collect("abcd")
     @test scs("acd", "abc") == collect("abcd")
+
+    @test scs("abd", "cde") == collect("abcde")
 end
