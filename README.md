@@ -1,5 +1,7 @@
 # VectorAlignments.jl
 
+> *Simple utilities for comparing and aligning vectors*.
+
 Compare vectors with any kind of content for longest common subsequence, shortest common supersequence, and alignments.
 
 ## Overview
