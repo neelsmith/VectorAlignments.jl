@@ -32,6 +32,15 @@ end
 """Align each vector in a Vector of Vectors, v, to the comprehensive SCS for all the vector of sequences.
 This in effect generates a feature table represented as a 
 list of parallel vectors of equal length.
+
+# Examples
+```julia-repl
+julia> align([1,3,5], [1,2,3])
+2-element Vector{Any}:
+ Any[1, nothing, 3, 5]
+ Any[1, 2, 3, nothing]
+```
+
 $(SIGNATURES)
 """
 function align(v...)

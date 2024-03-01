@@ -27,6 +27,14 @@ end
 
 """Find the longest common subsequence for a vector of sequences.
 
+# Examples
+```julia-repl
+julia> lcs([1,3,5], [1,2,3])
+2-element Vector{Any}:
+ 1
+ 3
+```
+
 $(SIGNATURES)
 """
 function lcs(v...)

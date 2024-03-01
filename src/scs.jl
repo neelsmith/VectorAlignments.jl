@@ -1,5 +1,15 @@
 """Find the shortest common supersequence for a vector of sequences.
 
+
+# Examples
+```julia-repl
+julia> scs([1,3,5], [1,2,3])
+4-element Vector{Any}:
+ 1
+ 2
+ 3
+ 5
+```
 $(SIGNATURES)
 """
 function scs(v...)
