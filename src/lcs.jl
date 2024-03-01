@@ -1,6 +1,6 @@
-"""Find longest common subsequence for two sequences.
-Walk back through a matrix of alignment scores to find all items
-that are common to sequences `a` and `b`.
+"""Find the longest common subsequence for two sequences using dynamic programmning. First compute the memoizing matrix of scores comparing a and b, then walk back through the matrix to find all items that are common to both sequences.
+
+$(SIGNATURES)
 """
 function lcspair(a, b)
 	m = alignmentmemo(a,b)
@@ -25,7 +25,10 @@ function lcspair(a, b)
 end
 
 
-"""Find longest common subsequence for a vector of sequences."""
+"""Find the longest common subsequence for a vector of sequences.
+
+$(SIGNATURES)
+"""
 function lcs(v...)
 	if length(v) < 2
 		v

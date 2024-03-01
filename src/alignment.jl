@@ -1,4 +1,4 @@
-"""Align sequences s1 and s2 in a pair of vectors equal in length to the SCS.
+"""Align sequences s1 and s2 in a pair of vectors equal in length to the SCS of the two vectors.
 First find the SCS of the two sequences, then align each element of s1 an s2 with an element in the SCS.
 
 $(SIGNATURES)
@@ -29,8 +29,11 @@ function alignpair(s1,s2)
 end
 
 
-"""Compute the alignment of each sequence in a vector of sequences
-to the SCS for the vector of sequences."""
+"""Align each vector in a Vector of Vectors, v, to the comprehensive SCS for all the vector of sequences.
+This in effect generates a feature table represented as a 
+list of parallel vectors of equal length.
+$(SIGNATURES)
+"""
 function align(v...)
 	maxseq = scs(v...)
 	results = []
