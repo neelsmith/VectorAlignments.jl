@@ -1,5 +1,7 @@
+"""Find the shortest common supersequence for a vector of sequences.
 
-"""Find shortest common supersequence for a vector of sequences."""
+$(SIGNATURES)
+"""
 function scs(v...)
 	if length(v) < 2
 		v
@@ -9,10 +11,10 @@ function scs(v...)
 	end
 end
 
+"""
+Find the shortest common supersequence for two sequences using dynamic programmning. First compute the memoizing matrix of scores comparing a and b, then walk back through the matrix to find all items in either sequence.
 
-"""Find shortest common supersequence for two sequences.
-Walk back through a matrix of alignment scores to recover
-all items in sequences `a` or `b`.
+$(SIGNATURES)    
 """
 function scspair(a, b)
 	m = alignmentmemo(a,b)
