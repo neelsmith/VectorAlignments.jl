@@ -1,6 +1,6 @@
 # VectorAlignments.jl
 
-Compare vectors for shortest common supersequence, longest common subsequence, and alignments.
+Compare vectors with any kind of content for longest common subsequence, shortest common supersequence, and alignments.
 
 ## Overview
 
