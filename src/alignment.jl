@@ -29,9 +29,8 @@ function alignpair(s1,s2)
 end
 
 
-"""Align each vector in a Vector of Vectors, v, to the comprehensive SCS for all the vector of sequences.
-This in effect generates a feature table represented as a 
-list of parallel vectors of equal length.
+"""Align each of the vectors in the parameter list to the comprehensive SCS for all of the parameter vectors.
+
 
 # Examples
 ```jldoctest

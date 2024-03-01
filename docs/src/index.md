@@ -31,6 +31,7 @@ align("abc", "abd")
 ```
 
 
+
 ## A few details
 
 
@@ -68,6 +69,9 @@ scs(s1, s2, s3)
 ```@example basic
 align(s1, s2, s3)
 ```
+
+The resulting list of parallel vectors of equal length in effect represents a feature table of all elements in all the parameter vectors.
+
 
 ### Order of alignment in gaps
 
