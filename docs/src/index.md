@@ -27,3 +27,8 @@ scs("ab", "abc")
 ```@example basic
 align("bc", "abc")
 ```
+
+
+## Details
+
+scs("ab", "ac")

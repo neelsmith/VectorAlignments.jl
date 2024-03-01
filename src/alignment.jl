@@ -1,5 +1,7 @@
 """Align sequences s1 and s2 in a pair of vectors equal in length to the SCS.
 First find the SCS of the two sequences, then align each element of s1 an s2 with an element in the SCS.
+
+$(SIGNATURES)
 """
 function alignpair(s1,s2)
 	slots = scs(s1, s2)

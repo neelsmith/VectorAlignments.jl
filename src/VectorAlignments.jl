@@ -1,6 +1,6 @@
 module VectorAlignments
 
-using Test, TestSetExtensions
+using Documenter, DocStringExtensions
 
 include("matrix.jl")
 include("lcs.jl")

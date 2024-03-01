@@ -1,6 +1,4 @@
 
-
-
 """Find shortest common supersequence for a vector of sequences."""
 function scs(v...)
 	if length(v) < 2
@@ -24,14 +22,19 @@ function scspair(a, b)
     keepers = []
     while x > 1 && y > 1
         @debug("Unwind memo at $(x), $(y)")
-        if m[x, y] == m[x-1, y]
-            @debug("Matched on column to left")
-            x -= 1
-            push!(keepers, a[x])
-        elseif m[x, y] == m[x, y-1]
+        
+        # Rows win in case of a tie:
+        # this is equivalent to giving `a` priority over `b`.
+        if m[x, y] == m[x, y-1]
             @debug("Matched on row above")
             y -= 1
             push!(keepers, b[y])
+
+        elseif m[x, y] == m[x-1, y]
+            @debug("Matched on column to left")
+            x -= 1
+            push!(keepers, a[x])
+
         else
             @assert a[x-1] == b[y-1]
             @debug("Matching chars $(a[x-1])")

@@ -1,8 +1,8 @@
 @testset "Test alignment" begin
     
     @test align("abcf", "bce") == [
-        ['a','b', 'c', nothing, 'f'],
-        [nothing, 'b', 'c', 'e', nothing]
+        ['a', 'b', 'c', 'f', nothing],
+        [nothing, 'b', 'c', nothing, 'e']
     ]
 
     @test align("ab", "bc") == [
