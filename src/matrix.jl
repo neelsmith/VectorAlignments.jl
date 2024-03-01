@@ -3,10 +3,9 @@ Needleman-Wunsch algorithm to solve longest common subsequence with dynamic prog
 """
 function alignmentmemo(a, b)
     lengths = zeros(Int, length(a) + 1, length(b) + 1)
-    lastx = 0
-    lasty = 0
     for (i, x) in enumerate(a)
         for (j, y) in enumerate(b)
+            @debug("At $(i)/$(j): $(x) and $(y)")
             if x == y
                 lengths[i+1, j+1] = lengths[i, j] + 1
             else
@@ -14,6 +13,5 @@ function alignmentmemo(a, b)
             end
         end
     end
-    rows, cols = size(lengths)
     lengths
 end

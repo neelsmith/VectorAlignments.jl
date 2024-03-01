@@ -18,23 +18,36 @@ all items in sequences `a` or `b`.
 """
 function scspair(a, b)
 	m = alignmentmemo(a,b)
+
     x,y = size(m)
 
     keepers = []
     while x > 1 && y > 1
+        @debug("Unwind memo at $(x), $(y)")
         if m[x, y] == m[x-1, y]
+            @debug("Matched on column to left")
             x -= 1
             push!(keepers, a[x])
         elseif m[x, y] == m[x, y-1]
+            @debug("Matched on row above")
             y -= 1
             push!(keepers, b[y])
         else
             @assert a[x-1] == b[y-1]
+            @debug("Matching chars $(a[x-1])")
             push!(keepers, a[x-1])
             x -= 1
             y -= 1
         end
+       
     end
+    if y > 1
+        push!(keepers, b[y-1])
+    end
+    if x > 1
+        push!(keepers, a[x-1])
+    end
+    
     keepers |> reverse
 end
 
