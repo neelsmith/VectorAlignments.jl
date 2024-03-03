@@ -4,4 +4,5 @@
 lcs
 scs
 align
+featurematrix
 ```
