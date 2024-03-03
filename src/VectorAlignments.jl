@@ -11,5 +11,6 @@ include("alignment.jl")
 
 
 export scs, lcs, align
+export featurematrix
 
 end # module VectorAlignments

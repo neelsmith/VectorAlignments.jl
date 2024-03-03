@@ -67,3 +67,16 @@ function align(v... ; norm = x -> x, cf = (x,y) -> x == y)
 	results
 end
 
+"""Create a feature matrix for a list of vectors.
+In the resulting matrix, each column c represents the alignment
+of one vector with the SCS for the parameter vectors, each
+row r represents one feature, and each cell value r,c is
+the value for feature r in vector c.
+"""
+function featurematrix(v... ; norm = x -> x, cf = (x,y) -> x == y)
+	rows = length(v)
+	vectors = align(v...; norm = norm, cf = cf)
+	cols = length(vectors[1])
+	reduction = reduce(vcat, vectors)
+	reshape(reduction, cols, rows)
+end
