@@ -3,24 +3,40 @@ First find the SCS of the two sequences, then align each element of s1 an s2 wit
 
 $(SIGNATURES)
 """
-function alignpair(s1,s2)
+function alignpair(s1, s2; 
+	norm = x -> x, 
+	cf = (x,y) -> x == y)
+
 	slots = scs(s1, s2)
+
 	s1align = []
 	s2align = []
-
 	s1seen = 1
 	s2seen = 1
-	for (i, item) in enumerate(slots)
-		if s1seen <= length(s1) && slots[i] == s1[s1seen]
-			push!(s1align, s1[s1seen])
-			s1seen = s1seen + 1
+
+	for item in slots
+		slotsval = norm(item)
+		if s1seen <= length(s1)
+			s1val = norm(s1[s1seen])
+			if cf(slotsval, s1val)
+				push!(s1align, s1[s1seen])
+				s1seen = s1seen + 1
+			else
+				push!(s1align, nothing)
+			end
 		else
 			push!(s1align, nothing)
 		end
 
-		if s2seen <= length(s2) && slots[i] == s2[s2seen]
-			push!(s2align, s2[s2seen])
-			s2seen = s2seen + 1
+		if s2seen <= length(s2) 
+			s2val = norm(s2[s2seen])
+			
+			if cf(slotsval, s2val)
+				push!(s2align, s2[s2seen])
+				s2seen = s2seen + 1
+			else
+				push!(s2align, nothing)
+			end
 		else
 			push!(s2align, nothing)
 		end
@@ -42,11 +58,12 @@ julia> align([1,3,5], [1,2,3])
 
 $(SIGNATURES)
 """
-function align(v...)
+function align(v... ; norm = x -> x, cf = (x,y) -> x == y)
 	maxseq = scs(v...)
 	results = []
 	for seq in v
-		push!(results, alignpair(seq, maxseq)[1])
+		push!(results, alignpair(seq, maxseq, norm = norm, cf = cf)[1])
 	end
 	results
 end
+
