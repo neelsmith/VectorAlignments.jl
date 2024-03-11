@@ -26,8 +26,8 @@ Find the shortest common supersequence for two sequences using dynamic programmn
 
 $(SIGNATURES)    
 """
-function scspair(a, b)
-	m = alignmentmemo(a,b)
+function scspair(a, b; norm = x -> x)
+	m = alignmentmemo(a,b, norm = norm)
 
     x,y = size(m)
 

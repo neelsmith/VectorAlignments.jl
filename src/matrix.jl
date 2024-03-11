@@ -2,11 +2,11 @@
 
 $(SIGNATURES)
 """
-function alignmentmemo(a, b)
+function alignmentmemo(a, b; norm = x -> x, cf = (x,y) -> x == y)
     scores = zeros(Int, length(a) + 1, length(b) + 1)
     for (i, x) in enumerate(a)
         for (j, y) in enumerate(b)
-            if x == y
+            if cf(norm(x),norm(y))
                 scores[i+1, j+1] = scores[i, j] + 1
             else
                 scores[i+1, j+1] = max(scores[i+1, j], scores[i, j+1])

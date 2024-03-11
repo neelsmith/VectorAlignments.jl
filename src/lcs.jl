@@ -2,8 +2,8 @@
 
 $(SIGNATURES)
 """
-function lcspair(a, b)
-	m = alignmentmemo(a,b)
+function lcspair(a, b; norm = x -> x, cf = (x,y) -> x == y )
+	m = alignmentmemo(a,b; norm = norm, cf = cf)
     x,y = size(m)
 
     keepers = []
@@ -15,7 +15,7 @@ function lcspair(a, b)
             y -= 1
             
         else
-            @assert a[x-1] == b[y-1]
+            @assert cf(norm(a[x-1]),norm(b[y-1]))
             push!(keepers, a[x-1])
             x -= 1
             y -= 1
@@ -37,11 +37,14 @@ julia> lcs([1,3,5], [1,2,3])
 
 $(SIGNATURES)
 """
-function lcs(v...)
+function lcs(v...; 
+    norm = x -> x, 
+    cf = (x,y) -> x == y)
+
 	if length(v) < 2
 		v
 	else 
-		lcs1 = lcspair(v[1], v[2])
-        length(v) == 2 ? lcs1 : lcs(lcs1, v[3:end]...)
+		lcs1 = lcspair(v[1], v[2]; norm = norm, cf = cf)
+        length(v) == 2 ? lcs1 : lcs(lcs1, v[3:end]...; norm = norm, cf = cf)
 	end
 end
