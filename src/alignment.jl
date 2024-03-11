@@ -65,6 +65,21 @@ function align(v... ; norm = x -> x, cf = (x,y) -> x == y)
 		push!(results, alignpair(seq, maxseq, norm = norm, cf = cf)[1])
 	end
 	results
+
+
+	rows = length(v)
+	cols = length(results[1])
+	@debug("r/c for scs is $(rows)/ $(cols)")
+	reduction = reduce(vcat, results)
+	reshaped = reshape(reduction, cols, rows)
+	# Can't simply transpose on nothing values, I think, so jump through these hoops:
+	filtered = [reshaped[i,:] for i in 1:cols if unique(reshaped[i,:]) != [nothing]] |> stack
+	vofv = []
+	for r in 1:rows
+		push!(vofv, filtered[r, :])
+	end
+	vofv
+	
 end
 
 """Create a feature matrix for a list of vectors.

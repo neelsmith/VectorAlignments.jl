@@ -10,11 +10,11 @@
     @test VectorAlignments.alignmentmemo(s1, s2) == expected
 
 
-    #@test VectorAlignments.alignmentmemo("a","") == [0, 0]
+    @test VectorAlignments.alignmentmemo("a","") == [0 ; 0;;  ]
 
     @test VectorAlignments.alignmentmemo("a","a") == [0 0 ; 0 1]
 
-    # VectorAlignments.alignmentmemo("ab", "a")
-    # VectorAlignments.alignmentmemo("a", "ab")
-    # VectorAlignments.alignmentmemo("a", "ba")
+    @test VectorAlignments.alignmentmemo("ab", "a") ==  [ 0 0; 0 1; 0 1]
+    @test VectorAlignments.alignmentmemo("a", "ab") == [ 0  0  0 ; 0  1  1]
+    @test VectorAlignments.alignmentmemo("a", "ba") == [0  0  0; 0  0  1]
 end

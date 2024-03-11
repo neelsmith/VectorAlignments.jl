@@ -12,12 +12,12 @@ julia> scs([1,3,5], [1,2,3])
 ```
 $(SIGNATURES)
 """
-function scs(v...)
+function scs(v...;  norm = x -> x, cf = (x,y) -> x == y)
 	if length(v) < 2
 		v
 	else 
-		scs1 = scspair(v[1], v[2])
-        length(v) == 2 ? scs1 : scs(scs1, v[3:end]...)
+		scs1 = scspair(v[1], v[2]; norm = norm, cf = cf)
+        length(v) == 2 ? scs1 : scs(scs1, v[3:end]...; norm = norm, cf = cf)
 	end
 end
 
@@ -26,8 +26,8 @@ Find the shortest common supersequence for two sequences using dynamic programmn
 
 $(SIGNATURES)    
 """
-function scspair(a, b; norm = x -> x)
-	m = alignmentmemo(a,b, norm = norm)
+function scspair(a, b; norm = x -> x, cf = (x,y) -> x == y )
+	m = alignmentmemo(a,b, norm = norm, cf = cf)
 
     x,y = size(m)
 
@@ -48,7 +48,7 @@ function scspair(a, b; norm = x -> x)
             push!(keepers, a[x])
 
         else
-            @assert a[x-1] == b[y-1]
+            @assert cf(norm(a[x-1]), norm(b[y-1]))
             @debug("Matching chars $(a[x-1])")
             push!(keepers, a[x-1])
             x -= 1
