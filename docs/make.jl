@@ -23,7 +23,7 @@ makedocs(
 )
 
 deploydocs(
-    repo = "github.com/HCMID/CitableTeiReaders.jl.git"
+    repo = "github.com/neelsmith/VectorAlignments.jl.git"
 )
 
 
