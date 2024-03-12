@@ -22,8 +22,11 @@ scs(s1, s2, s3)
 align(s1, s2, s3)
 ```
 
-The resulting list of parallel vectors of equal length in effect represents a feature table of all elements in all the parameter vectors.
+`featurematrix` returns a two-dimensional matrix, with one row for each feature and one column for each input vector.
 
+```@example params
+featurematrix(s1, s2, s3)
+```
 
 ## Order of alignment in gaps
 
@@ -42,14 +45,14 @@ scs("cd", "bd", "ad")
 
 ## Optional parameters
 
-`lcs`, `scs` and `align` use the Needleman–Wunsch algorithm to align sequences. Its dynamic-programming approach constructs a matrix of scores comparing two lists element by element. `lcs`, `scs` and `align` allow optional named parameters for two functions that are applied in this process: 
+`lcs`, `scs`, `align` and `featurematrix` use the Needleman–Wunsch algorithm to align sequences. Its dynamic-programming approach constructs a matrix of scores comparing two lists element by element. `lcs`, `scs`, `align` and `featurematrix` allow optional named parameters for two functions that are applied in this process: 
 
 - `norm`: a function to normalize values before comparing them. The default is to use the unaltered value of the element (`x -> x`).
 - `cf`: a function for comparing the elements of the two vectors. The default is to compare for equality (`==`).
 
 ### Examples: normalization
 
-The following alignment normalizes characters to lowercase before comparing them, so that 'b' and 'B' are aligned. Note that the raw values (before normalization) are retained in the aligned vectors.
+The following alignment normalizes characters to lowercase before comparing them, so that `'b'` and `'B'` are aligned. Note that the raw values (before normalization) are retained in the aligned vectors.
 
 ```@example params
 featurematrix("ab", "Bc", "cd"; norm = lowercase)
@@ -68,14 +71,15 @@ scs("aB", "bc", "cd"; norm = lowercase)   |> join
 
 ### Examples: comparison
 
-In the following example, we compare elements using Julia's `isapprox` with a value of 0.1 for relative tolerance:
+In the following example, we compare elements using Julia's `isapprox` function with a value of 0.1 for relative tolerance:
 
 
 ```@example params
-a = [0.95,1.1, 0.9]
-b = [0.93, 0.99, 0.99]
+a = [0.95, 1.1, 0.98]
+b = [0.93, 0.99, 0.96]
 
 f = (x,y) -> ≈(x,y; rtol = 0.1)
+
 featurematrix(a,b; cf = f)
 ```
 
