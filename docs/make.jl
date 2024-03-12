@@ -18,6 +18,7 @@ makedocs(
     sitename = "VectorAlignments",
     pages = [
         "Home" => "index.md",
+        "Parameters and options" => "params.md",
         "API" => "apis.md"
     ]
 )

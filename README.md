@@ -26,3 +26,6 @@ julia> align("bc","abc")
  Any[nothing, 'b', 'c']
  Any['a', 'b', 'c']
 ```
+
+
+See [the documentation](https://neelsmith.github.io/VectorAlignments.jl/stable/) for more details.
